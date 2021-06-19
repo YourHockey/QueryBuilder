@@ -17,11 +17,11 @@ import java.util.Map;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public class FilterAndSortingRepositoryImpl<BE extends BasicEntity> implements ru.gunmarket.querybuilder.FilterAndSortingRepository<BE> {
+public class FilterAndSortingRepositoryImpl<BE extends BasicEntity> implements FilterAndSortingRepository<BE> {
 
     @PersistenceContext
     private final EntityManager entityManager;
-    private final ru.gunmarket.querybuilder.QueryBuilder queryBuilder;
+    private final QueryBuilder queryBuilder;
 
     @Override
     public List<BE> findAllByParameters(Map<String, String> requestParams, Pageable pageable, Class entityClass) {
