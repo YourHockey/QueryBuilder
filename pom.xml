@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.gunmarket</groupId>
-    <artifactId>QueryBuilder</artifactId>
+    <artifactId>query-builder</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>QueryBuilder</name>
+    <name>query-builder</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
