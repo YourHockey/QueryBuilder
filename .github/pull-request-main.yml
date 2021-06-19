@@ -1,0 +1,19 @@
+name: Build & Test on pull request to main branch
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Set up JDK
+        uses: actions/setup-java@v2.1.0
+        with:
+          distribution: adopt
+          java-version: 15
+          java-package: jdk
+          architecture: x64
+      - name: Build with Maven
+        run: mvn -B verify

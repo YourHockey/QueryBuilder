@@ -1,0 +1,29 @@
+name: Build, Test & Deploy after push to main branch
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Set up JDK
+        uses: actions/setup-java@v2.1.0
+        with:
+          distribution: adopt
+          java-version: 15
+          java-package: jdk
+          architecture: x64
+      - name: Build with Maven
+        run: mvn -B verify
+      - name: Publish to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
+          echo "New version: ${NEW_VERSION}"
+          mvn deploy
+        # The GITHUB_REF tag comes in the format 'refs/tags/xxx'.
+        # If we split on '/' and take the 3rd value,
+        # we can get the release name.
