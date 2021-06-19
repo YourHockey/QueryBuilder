@@ -7,7 +7,6 @@
     <groupId>ru.gunmarket</groupId>
     <artifactId>query-builder</artifactId>
     <version>1.0</version>
-    <packaging>pom</packaging>
     <name>query-builder</name>
 
     <parent>
